@@ -17,5 +17,8 @@ class NavBarComponent extends BaseComponent {
   get signInLink() {
     return $('[data-test="nav-sign-in"]');
   }
+  get cartLink() {
+    return $('[data-test="nav-cart"]');
+  }
 }
 export default NavBarComponent;
