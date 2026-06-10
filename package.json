@@ -4,7 +4,7 @@
   "description": "This repository contains test cases (8 scenarios) written using Gherkin syntax (BDD). The scenarios are written for the [Practice Software Testing](https://practicesoftwaretesting.com/).",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run ./wdio.conf.js",
+    "test": "wdio run ./src/configs/wdio.conf.js",
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

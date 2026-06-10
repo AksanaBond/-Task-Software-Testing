@@ -1,6 +1,6 @@
 import BaseComponent from './common/base.component';
 
-class InputComponent extends BaseComponent {
+class LoginComponent extends BaseComponent {
   constructor() {
     super('[data-test="login-form"]');
   }
@@ -13,5 +13,8 @@ class InputComponent extends BaseComponent {
   get loginButton() {
     return $('[data-test="login-submit"]');
   }
+  get registerLink() {
+    return $('[data-test="register-link"]');
+  }
 }
-export default InputComponent;
+export default LoginComponent;

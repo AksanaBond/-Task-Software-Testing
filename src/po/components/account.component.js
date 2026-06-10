@@ -20,4 +20,4 @@ class AccountComponent extends BaseComponent {
     return $('[data-test="nav-messages"]');
   }
 }
-export default AccountComponent;
+export default new AccountComponent();

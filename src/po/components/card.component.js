@@ -6,7 +6,7 @@ class CardComponent extends BaseComponent {
   }
   getCard(productName) {
     return $(
-      `//a[contains(@class, "card") and .//*[contains(text(), ${productName})]]`
+      `//a[contains(@class, "card") and .//*[normalize-space(.)="${productName}"]]`
     );
   }
 }

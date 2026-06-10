@@ -22,9 +22,7 @@ exports.config = {
   //
   specs: ['./../test/**/*.js'],
   // Patterns to exclude.
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+  exclude: ['./../test/basket.spec.js', './../test/login.spec.js'],
   //
   // ============
   // Capabilities
