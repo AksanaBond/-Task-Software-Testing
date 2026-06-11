@@ -21,5 +21,15 @@ class SearchFilterComponent extends BaseComponent {
   getFilterParameter(parameter) {
     return $(`//label[contains(text(), ${parameter})]/input`);
   }
+  async search(productName) {
+    await this.searchInput.setValue(productName);
+    await this.searchButton.click();
+  }
+  get getCardsName() {
+    return $$('[data-test="product-name"]');
+  }
+  async chosenFilterParameter(parameter) {
+    await this.getFilterParameter.click();
+  }
 }
 export default SearchFilterComponent;
