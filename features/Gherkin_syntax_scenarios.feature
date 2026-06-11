@@ -22,13 +22,13 @@ Scenario: Add product to the favorite list
   When the user adds product «Bolt Cutters» to his favorites
   Then the product appears in the user’s favorites list
 
-Feature:  Search for an exact product
+Feature: Search for products
 
-Scenario: Search for an exact product
+Scenario: Search for a product using a general keyword
   Given the user is on the home page
-  When the user searches for the exact product "Claw Hammer" in the search bar
-  Then  the search result should display the "Claw Hammer" product card
-  And no unrelated product categories should be visible
+  When the user searches for the product "Claw Hammer" in the search bar
+  Then all returned product cards should contain "Claw Hammer" in their title
+  And multiple relevant products can be displayed
 
 Feature:  Basket
 
