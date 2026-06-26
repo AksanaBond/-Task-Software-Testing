@@ -19,5 +19,8 @@ class ProductDetailsComponent extends BaseComponent {
   get productDescription() {
     return $('[data-test="product-description"]');
   }
+  get brandBadge() {
+    return $('[aria-label="brand"]');
+  }
 }
 export default ProductDetailsComponent;

@@ -20,5 +20,8 @@ class HomePage extends BasePage {
   async getVisibleProductNames() {
     return await this.productTitles.map(async (el) => await el.getText());
   }
+  async openFirstCard() {
+    await this.productTitles[0].click();
+  }
 }
 export default new HomePage();

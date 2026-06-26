@@ -1,7 +1,9 @@
+import ProductDetailsComponent from '../po/components/productDetails.component';
 import homePage from '../po/pages/home.page';
 import { assert, expect as chaiExpect } from 'chai';
+import productDetailsPage from '../po/pages/product.details.page';
 
-describe('Search for products', () => {
+/* describe('Search for products', () => {
   it('Search for a product using a general keyword', async () => {
     await homePage.open(); // Given the user is on the home page
     await homePage.searchFilterComponent.search('Claw Hammer'); // When the user searches
@@ -46,16 +48,17 @@ describe('Product categories', () => {
     }); // Then the product list is updated to show only filtered items
     chaiExpect(isHammerChecked).to.be.true; // And the "Hammer" category filter is marked as selected
   });
-});
-/* describe('Filters & sort products', () => {
+}); */
+describe('Filters & sort products', () => {
   it('Filtering and sorting products by specific criteria', async () => {
     await homePage.open(); // Given the user is on the home page
     //When the user filters products by a specific brand
-    await homePage.searchFilterComponent.getFilterParameter('ForgeFlex Tools');
+    await homePage.searchFilterComponent.selectCategory('ForgeFlex Tools');
     //And the user sorts the filtered products by price from low to high
     await homePage.searchFilterComponent.sortBy('value', 'price,asc');
     await browser.pause(1500);
     const productCards = await homePage.searchFilterComponent.getCardsPrice;
+
     const prices = [];
     for (const card of productCards) {
       const priceText = await card.getText();
@@ -63,6 +66,10 @@ describe('Product categories', () => {
       prices.push(priceNumber);
     }
     const minPriceOnPage = Math.min(...prices);
-    expect(prices[0]).toEqual(minPriceOnPage); // And the first displayed product should be the cheapest one
+    await homePage.openFirstCard();
+    chaiExpect(prices[0]).to.equal(minPriceOnPage); // And the first displayed product should be the cheapest one
+
+    const badgeText = await productDetailsPage.getBrandText();
+    chaiExpect(badgeText).to.include('ForgeFlex Tools');
   });
-}); */
+});

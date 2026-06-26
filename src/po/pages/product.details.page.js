@@ -20,5 +20,8 @@ class ProductDetailsPage extends BasePage {
   async proceedToCheckout() {
     await this.navbarComponent.cartLink.click();
   }
+  async getBrandText() {
+    return await this.productDetailsComponent.brandBadge.getText();
+  }
 }
 export default new ProductDetailsPage();
