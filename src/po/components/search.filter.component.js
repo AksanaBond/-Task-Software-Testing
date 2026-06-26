@@ -19,7 +19,7 @@ class SearchFilterComponent extends BaseComponent {
     return $('[data-test="sort"]');
   }
   getFilterParameter(parameter) {
-    return $(`//label[contains(text(), ${parameter})]/input`);
+    return $(`//label[contains(., "${parameter}")]/input`);
   }
   async search(productName) {
     await this.searchInput.setValue(productName);
@@ -28,8 +28,17 @@ class SearchFilterComponent extends BaseComponent {
   get getCardsName() {
     return $$('[data-test="product-name"]');
   }
-  async chosenFilterParameter(parameter) {
-    await this.getFilterParameter.click();
+  get getCardsPrice() {
+    return $$('[data-test="product-price"]');
+  }
+  async selectCategory(parameter) {
+    await this.getFilterParameter(parameter).click();
+  }
+  async sortBy(attribute, value) {
+    await this.selectSort.selectByAttribute(attribute, value);
+  }
+  async isCategorySelected(categoryName) {
+    return await this.getFilterParameter(categoryName).isSelected();
   }
 }
 export default SearchFilterComponent;

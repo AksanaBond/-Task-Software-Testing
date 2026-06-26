@@ -1,6 +1,6 @@
 import homePage from '../po/pages/home.page';
 import productDetailsPage from '../po/pages/product.details.page';
-import { expect as chaiExpect, assert } from 'chai';
+import { expect as chaiExpect } from 'chai';
 
 describe('Basket Feature', () => {
   it('should add a product to the basket successfully', async () => {

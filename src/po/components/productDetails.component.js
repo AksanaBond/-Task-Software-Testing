@@ -16,5 +16,8 @@ class ProductDetailsComponent extends BaseComponent {
   get addToFavouritesButton() {
     return $('[data-test="add-to-favorites"]');
   }
+  get productDescription() {
+    return $('[data-test="product-description"]');
+  }
 }
 export default ProductDetailsComponent;

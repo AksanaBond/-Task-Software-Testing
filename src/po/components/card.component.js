@@ -2,11 +2,11 @@ import BaseComponent from './common/base.component';
 
 class CardComponent extends BaseComponent {
   constructor() {
-    super('.col-md-9 .container');
+    super('body');
   }
   getCard(productName) {
-    return $(
-      `//a[contains(@class, "card") and .//*[normalize-space(.)="${productName}"]]`
+    return this.rootEl.$(
+      `.//a[starts-with(@data-test, "product-")][.//*[@data-test="product-name" and normalize-space()="${productName}"]]`
     );
   }
 }

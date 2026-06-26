@@ -6,13 +6,19 @@ import CardComponent from '../components/card.component.js';
 class HomePage extends BasePage {
   constructor() {
     super('/');
-    this.navbarcomponent = new NavBarComponent();
-    this.searchfiltercomponent = new SearchFilterComponent();
-    this.cardcomponent = new CardComponent();
+    this.navbarComponent = new NavBarComponent();
+    this.searchFilterComponent = new SearchFilterComponent();
+    this.cardComponent = new CardComponent();
+  }
+  get productTitles() {
+    return $$('[data-test="product-name"]');
   }
   async openProductDetails(productName) {
-    const productCard = await this.cardcomponent.getCard(productName);
+    const productCard = await this.cardComponent.getCard(productName);
     await productCard.click();
+  }
+  async getVisibleProductNames() {
+    return await this.productTitles.map(async (el) => await el.getText());
   }
 }
 export default new HomePage();

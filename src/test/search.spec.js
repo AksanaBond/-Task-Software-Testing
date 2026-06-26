@@ -1,14 +1,14 @@
 import homePage from '../po/pages/home.page';
-import { assert } from 'chai';
+import { assert, expect as chaiExpect } from 'chai';
 
 describe('Search for products', () => {
   it('Search for a product using a general keyword', async () => {
     await homePage.open(); // Given the user is on the home page
-    await homePage.searchfiltercomponent.search('Claw Hammer'); // When the user searches
+    await homePage.searchFilterComponent.search('Claw Hammer'); // When the user searches
 
     await browser.pause(1500);
 
-    const cards = await homePage.searchfiltercomponent.getCardsName;
+    const cards = await homePage.searchFilterComponent.getCardsName;
 
     assert.isAbove(cards.length, 0, 'No products were found'); // And multiple relevant products can be displayed
 
@@ -24,10 +24,45 @@ describe('Search for products', () => {
   });
 });
 
-describe('Feature: Product categories', () => {
-  it('Scenario: select the chosen category', async () => {
+describe('Product categories', () => {
+  it('should display only filtered products when a category is selected', async () => {
     await homePage.open(); // Given the user is on the home page
-    // When the user selects "Hand Tools" category from the menu
-    await homePage.searchfiltercomponent.getFilterParameter('Hand Tools');
+    await homePage.searchFilterComponent.selectCategory('Hammer'); // When the user selects the "Hammer" category
+    await browser.waitUntil(
+      async () => {
+        const firstProductText = await homePage.productTitles[0].getText();
+        return firstProductText.toLowerCase().includes('hammer');
+      },
+      {
+        timeout: 5000,
+        timeoutMsg: 'Product list did not update to show hammers',
+      }
+    );
+    const isHammerChecked =
+      await homePage.searchFilterComponent.isCategorySelected('Hammer');
+    const productNames = await homePage.getVisibleProductNames();
+    productNames.forEach((name) => {
+      chaiExpect(name.toLowerCase()).to.include('hammer');
+    }); // Then the product list is updated to show only filtered items
+    chaiExpect(isHammerChecked).to.be.true; // And the "Hammer" category filter is marked as selected
   });
 });
+/* describe('Filters & sort products', () => {
+  it('Filtering and sorting products by specific criteria', async () => {
+    await homePage.open(); // Given the user is on the home page
+    //When the user filters products by a specific brand
+    await homePage.searchFilterComponent.getFilterParameter('ForgeFlex Tools');
+    //And the user sorts the filtered products by price from low to high
+    await homePage.searchFilterComponent.sortBy('value', 'price,asc');
+    await browser.pause(1500);
+    const productCards = await homePage.searchFilterComponent.getCardsPrice;
+    const prices = [];
+    for (const card of productCards) {
+      const priceText = await card.getText();
+      const priceNumber = parseFloat(priceText.replace(/[^0-9.-]+/g, ''));
+      prices.push(priceNumber);
+    }
+    const minPriceOnPage = Math.min(...prices);
+    expect(prices[0]).toEqual(minPriceOnPage); // And the first displayed product should be the cheapest one
+  });
+}); */

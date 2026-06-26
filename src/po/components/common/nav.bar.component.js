@@ -27,7 +27,7 @@ class NavBarComponent extends BaseComponent {
       `//ul[contains(@class, 'dropdown-menu')]//a[contains(text(), '${languageCode}')]`
     );
   }
-  async goToSingInPage() {
+  async goToSignInPage() {
     await this.signInLink.click();
   }
   async changeLanguage(languageCode) {
@@ -40,9 +40,12 @@ class NavBarComponent extends BaseComponent {
     return $('[data-test="nav-menu"]');
   }
   async goToFavorites() {
-    await userMenuDropdown.click();
+    await this.userMenuDropdown.click();
     const favoritesLink = await $('[data-test="nav-my-favorites"]');
     await favoritesLink.click();
+  }
+  async goToHome() {
+    await this.homeLink.click();
   }
 }
 export default NavBarComponent;

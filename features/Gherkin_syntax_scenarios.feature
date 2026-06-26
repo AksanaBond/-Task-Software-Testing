@@ -19,7 +19,7 @@ Feature:  Favorite products
 Scenario: Add product to the favorite list
   Given the user is logged into his personal account
   And the user navigates to the details page of a "Bolt Cutters"
-  When the user adds product «Bolt Cutters» to his favorites
+  When the user adds product "Bolt Cutters" to his favorites
   Then the product appears in the user’s favorites list
 
 Feature:  Search for an exact product
@@ -40,11 +40,11 @@ Scenario: Add a product to the basket
 
 Feature:  Product categories
 
-Scenario: select the chosen category
-  Given the user is on the home page
-  When the user selects  "Hand Tools" category from the menu
-  Then the product listing should filter to display only the selected category
-  And the page header should display "Hand Tools" as an active category
+Scenario: View products in a specific category
+    Given the user is on the home page
+    When the user selects the "Hammer" category
+    Then the product list is updated to show only filtered items
+    And the "Hammer" category filter is marked as selected
 
 Feature:  Checkout
 

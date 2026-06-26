@@ -1,19 +1,17 @@
-import homePage from '../po/pages/home.page';
-import loginPage from '../po/pages/login.page';
-import registerPage from '../po/pages/register.page';
-import accountComponent from '../po/components/account.component';
-import { REGISTER_CREDENTIALS } from '../utils/consts';
+import {
+  Given_user_has_account,
+  Given_user_on_login_page,
+  When_user_enters_email_password,
+  Then_user_should_be_redirected_to_account_page,
+} from '../steps/steps';
 
 describe('Login Feature', () => {
   it('Successful sign in with valid credentials', async () => {
-    await homePage.open();
-    await homePage.navbarcomponent.goToSingInPage(); // Given  the user is on the login page
-    //await loginPage.registerYourAccount();
-    //await registerPage.register(REGISTER_CREDENTIALS); // And the user has a registered account
-    await loginPage.login(
-      REGISTER_CREDENTIALS.email,
-      REGISTER_CREDENTIALS.password
-    ); // When the user enters a valid registered email address and password
-    await expect(accountComponent.title).toHaveText('My account'); // Then the user should be successfully redirected to his account page
+    await Given_user_has_account();
+    await Given_user_on_login_page();
+
+    await When_user_enters_email_password();
+
+    await Then_user_should_be_redirected_to_account_page();
   });
 });

@@ -6,7 +6,7 @@ import ProductDetailsComponent from '../components/productDetails.component.js';
 class ProductDetailsPage extends BasePage {
   constructor() {
     super('/');
-    this.navbarcomponent = new NavBarComponent();
+    this.navbarComponent = new NavBarComponent();
     this.searchfiltercomponent = new SearchFilterComponent();
     this.productDetailsComponent = new ProductDetailsComponent();
   }
@@ -14,8 +14,11 @@ class ProductDetailsPage extends BasePage {
   async addProductToCart() {
     await this.productDetailsComponent.addToCartButton.click();
   }
-  async addToFavourites() {
+  async addToFavorites() {
     await this.productDetailsComponent.addToFavouritesButton.click();
+  }
+  async proceedToCheckout() {
+    await this.navbarComponent.cartLink.click();
   }
 }
 export default new ProductDetailsPage();

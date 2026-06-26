@@ -9,6 +9,7 @@ export const REGISTER_CREDENTIALS = {
   city: 'Kwidzym',
   state: 'zachodniopomorskie',
   phone: 123456789,
-  email: 'hello@mail.com',
+  email: `autotest_${crypto.randomUUID()}@fake.com`,
   password: 'Abcdf123@',
+  payment: 'Cash on Delivery',
 };

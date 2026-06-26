@@ -20,8 +20,8 @@ exports.config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ['./../test/search.spec.js'],
-  // Patterns to exclude.
+  specs: ['./../test/checkout.spec.js'],
+  // Patterns to exclufavoritesde.
   //exclude: //['./../test/basket.spec.js', './../test/login.spec.js'],
   //
   // ============
@@ -127,7 +127,7 @@ exports.config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000,
+    timeout: 120000,
   },
 
   //
@@ -182,8 +182,10 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
-  // },
+  before: function (capabilities, specs) {
+    // Initialize Chai's 'should' interface so it can be used in all test files
+    require('chai').should();
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {string} commandName hook command name
