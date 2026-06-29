@@ -1,17 +1,15 @@
-import homePage from '../po/pages/home.page';
-import productDetailsPage from '../po/pages/product.details.page';
-import { expect as chaiExpect } from 'chai';
+import {
+  Given_the_user_is_on_the_home_page,
+  And_the_user_navigates_to_the_product_details,
+  When_the_user_adds_product_to_basket,
+  Then_the_basket_badge_should_display_an_item_count,
+} from '../steps/steps';
 
 describe('Basket Feature', () => {
   it('should add a product to the basket successfully', async () => {
-    await homePage.open(); // Given  the user is on the home page
-    await homePage.openProductDetails('Bolt Cutters'); // And the user navigates to the product details page "Bolt Cutters"
-    await productDetailsPage.productDetailsComponent.productName.waitForDisplayed();
-    await productDetailsPage.addProductToCart(); //  When the user adds product "Bolt Cutters" to basket
-    const badge = productDetailsPage.navbarComponent.cartBadge;
-    await badge.waitForDisplayed();
-    const textBadge = await badge.getText();
-    //await expect(badge).toHaveText('1');// Then the basket badge should display an item count of «1»
-    chaiExpect(textBadge).to.equal('1');
+    await Given_the_user_is_on_the_home_page();
+    await And_the_user_navigates_to_the_product_details('Bolt Cutters');
+    await When_the_user_adds_product_to_basket();
+    await Then_the_basket_badge_should_display_an_item_count();
   });
 });

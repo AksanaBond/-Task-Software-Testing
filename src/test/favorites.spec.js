@@ -1,25 +1,19 @@
-import { assert } from 'chai';
 import homePage from '../po/pages/home.page';
-import productDetailsPage from '../po/pages/product.details.page';
-import { Given_user_logged_in } from '../steps/steps';
-import favoritesPage from '../po/pages/favorites.page';
+
+import {
+  And_the_user_navigates_to_the_product_details,
+  Given_user_logged_in,
+  When_the_user_adds_product_to_favorites,
+  Then_the_product_appears_in_the_favorites_list,
+} from '../steps/steps';
 
 describe('Favorite products', () => {
   it('Add product to the favorite list successfully', async () => {
     await Given_user_logged_in();
 
     await homePage.navbarComponent.homeLink.click();
-    await homePage.openProductDetails('Bolt Cutters'); // And the user navigates to the product details page "Bolt Cutters"
-    await productDetailsPage.productDetailsComponent.productName.waitForDisplayed();
-    await productDetailsPage.addToFavorites(); //When the user adds product «Bolt Cutters» to his favorites
-    await homePage.navbarComponent.goToFavorites();
-
-    const favoriteCard =
-      await favoritesPage.favoritesCardComponent.getCard('Bolt Cutters');
-    const isCardVisible = await favoriteCard.isDisplayed();
-    assert.isTrue(
-      isCardVisible,
-      'The product "Bolt Cutters" was not found in the favorites list'
-    );
+    await And_the_user_navigates_to_the_product_details('Bolt Cutters');
+    await When_the_user_adds_product_to_favorites();
+    await Then_the_product_appears_in_the_favorites_list();
   });
 });
