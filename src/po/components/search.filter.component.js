@@ -39,7 +39,8 @@ class SearchFilterComponent extends BaseComponent {
     await this.sortDropdown.selectByAttribute(attribute, value);
   }
   async isCategorySelected(categoryName) {
-    return await this.getFilterParameter(categoryName).isSelected();
+    const element = await this.getFilterParameter(categoryName);
+    return await element.isSelected();
   }
 }
 export default SearchFilterComponent;

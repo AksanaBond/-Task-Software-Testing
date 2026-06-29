@@ -3,7 +3,7 @@ import homePage from '../po/pages/home.page';
 import { assert, expect as chaiExpect } from 'chai';
 import productDetailsPage from '../po/pages/product.details.page';
 
-/* describe('Search for products', () => {
+describe('Search for products', () => {
   it('Search for a product using a general keyword', async () => {
     await homePage.open(); // Given the user is on the home page
     await homePage.searchFilterComponent.search('Claw Hammer'); // When the user searches
@@ -48,7 +48,7 @@ describe('Product categories', () => {
     }); // Then the product list is updated to show only filtered items
     chaiExpect(isHammerChecked).to.be.true; // And the "Hammer" category filter is marked as selected
   });
-}); */
+});
 describe('Filters & sort products', () => {
   it('Filtering and sorting products by specific criteria', async () => {
     await homePage.open(); // Given the user is on the home page

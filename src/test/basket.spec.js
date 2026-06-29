@@ -8,7 +8,7 @@ describe('Basket Feature', () => {
     await homePage.openProductDetails('Bolt Cutters'); // And the user navigates to the product details page "Bolt Cutters"
     await productDetailsPage.productDetailsComponent.productName.waitForDisplayed();
     await productDetailsPage.addProductToCart(); //  When the user adds product "Bolt Cutters" to basket
-    const badge = productDetailsPage.navbarcomponent.cartBadge;
+    const badge = productDetailsPage.navbarComponent.cartBadge;
     await badge.waitForDisplayed();
     const textBadge = await badge.getText();
     //await expect(badge).toHaveText('1');// Then the basket badge should display an item count of «1»

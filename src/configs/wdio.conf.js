@@ -20,7 +20,7 @@ exports.config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ['./../test/search.spec.js'],
+  specs: ['./../test/**/*.spec.js'],
   // Patterns to exclufavoritesde.
   //exclude: //['./../test/basket.spec.js', './../test/login.spec.js'],
   //
@@ -39,7 +39,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 1,
+  maxInstances: 2,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -48,6 +48,16 @@ exports.config = {
   capabilities: [
     {
       browserName: 'chrome',
+      maxInstances: 2,
+      'goog:chromeOptions': {
+        args: [
+          '--headless',
+          '--disable-gpu',
+          '--window-size=1920,1080',
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+        ],
+      },
     },
   ],
 
