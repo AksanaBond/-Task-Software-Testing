@@ -6,6 +6,7 @@ export class BasePage {
     this.languageDropdown = page.locator('[data-test="language"]');
     this.basketIcon = page.locator('[data-test="nav-cart"]');
     this.basketBadge = page.locator('[data-test="cart-quantity"]');
+    this.toastNotification = page.locator('#toast-container');
   }
 
   async navigate(path) {

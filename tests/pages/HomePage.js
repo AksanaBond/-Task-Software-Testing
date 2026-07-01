@@ -43,14 +43,6 @@ export class HomePage extends BasePage {
     return await this.productTitles.allTextContents();
   }
 
-  async clickOnProduct(productName) {
-    const product = this.page.locator(
-      `[data-test="product-name"]:has-text("${productName}")`
-    );
-    await product.click();
-    await this.page.waitForURL('**/product/**');
-  }
-
   async getInterfaceLanguageElements() {
     const filtersText =
       (await this.page.locator('h5').first().textContent()) || '';
