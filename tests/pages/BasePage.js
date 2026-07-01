@@ -8,6 +8,7 @@ export class BasePage {
     this.basketBadge = page.locator('[data-test="cart-quantity"]');
     this.toastNotification = page.locator('#toast-container');
     this.homeLink = page.locator('[data-test="nav-home"]');
+    this.signInLink = page.locator('[data-test="nav-sign-in"]');
   }
 
   async navigate(path) {

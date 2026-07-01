@@ -53,4 +53,7 @@ export class HomePage extends BasePage {
       (await this.sortDropdown.locator('option').first().textContent()) || '';
     return { filtersText, sortText };
   }
+  async navigateToLoginPage() {
+    return this.signInLink.click();
+  }
 }
