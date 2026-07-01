@@ -8,7 +8,6 @@ export class HomePage extends BasePage {
     this.productTitles = page.locator('[data-test="product-name"]');
     this.navbarBrand = page.locator('.navbar-brand');
     this.categoryFilters = page.locator('[data-test="filters"]');
-    this.homeLink = page.locator('[data-test="nav-home"]');
     this.filtersTitle = page.locator('h5:has-text("Filters")');
     this.sortDropdown = page.locator('[data-test="sort"]');
     this.searchInput = page.locator('[data-test="search-query"]');
@@ -41,6 +40,10 @@ export class HomePage extends BasePage {
   async getProductCardTitles() {
     await this.productTitles.first().waitFor({ state: 'visible' });
     return await this.productTitles.allTextContents();
+  }
+  async navigateToFirstProduct() {
+    await this.productTitles.first().click();
+    await this.page.waitForURL('**/product/**');
   }
 
   async getInterfaceLanguageElements() {
