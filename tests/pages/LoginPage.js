@@ -22,8 +22,11 @@ export class LoginPage extends BasePage {
   }
 
   async login(parameter) {
+    await this.emailInput.waitFor({ state: 'visible', timeout: 10000 });
     await this.emailInput.fill(parameter.email);
+    await this.passwordInput.waitFor({ state: 'visible', timeout: 10000 });
     await this.passwordInput.fill(parameter.password);
+    await this.loginButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.loginButton.click();
     await this.page.waitForURL('**/account');
   }

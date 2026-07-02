@@ -16,6 +16,7 @@ export class ProductPage extends BasePage {
     const productLink = this.page
       .locator(`[data-test="product-name"]:has-text("${productName}")`)
       .first();
+      await productLink.waitFor({ state: 'visible', timeout: 10000 });
     await productLink.click();
     await this.page.waitForURL('**/product/**');
   }
