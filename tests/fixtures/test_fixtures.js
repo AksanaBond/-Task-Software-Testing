@@ -3,6 +3,7 @@ import { HomePage } from '../pages/HomePage';
 import { ProductPage } from '../pages/ProductPage';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
+import { AccountPage } from '../pages/AccountPage';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -16,6 +17,9 @@ export const test = base.extend({
   },
   registerPage: async ({ page }, use) => {
     await use(new RegisterPage(page));
+  },
+  accountPage: async ({ page }, use) => {
+    await use(new AccountPage(page));
   },
 });
 

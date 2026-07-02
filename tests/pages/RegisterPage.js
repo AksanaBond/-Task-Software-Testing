@@ -34,6 +34,7 @@ export class RegisterPage extends BasePage {
     await this.emailInput.fill(register.email);
     await this.passwordInput.fill(register.password);
     await this.registerButton.click();
+
     await this.page.waitForURL('**/auth/login', {
       waitUntil: 'domcontentloaded',
     });

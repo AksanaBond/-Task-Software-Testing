@@ -8,6 +8,7 @@ test.describe('User Sign in', () => {
     homePage,
     loginPage,
     registerPage,
+    accountPage,
   }) => {
     await test.step('Given the user is on the login page', async () => {
       await homePage.navigateToHomePage();
@@ -26,7 +27,9 @@ test.describe('User Sign in', () => {
     });
 
     await test.step('Then the user should be redirected to their account page', async () => {
-      await expect(page).toHaveURL(/.*\/account/);
+      //   await expect(page).toHaveURL(/.*\/account/);
+      await accountPage.verifyAccountPageDisplayed();
+      await expect(accountPage.title).toBeVisible();
     });
   });
 });

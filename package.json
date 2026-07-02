@@ -5,6 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:safari": "npx playwright test --project=webkit",
+    "test:parallel": "npx playwright test --workers=2",
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
