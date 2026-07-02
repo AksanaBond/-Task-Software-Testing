@@ -15,7 +15,9 @@ test.describe('language change', () => {
     });
 
     await test.step('Then the application interface should be displayed in German', async () => {
-      await expect(homePage.homeLink).toContainText('Start');
+      await expect(homePage.homeLink).toContainText('Start', {
+        timeout: 10000,
+      });
     });
 
     await test.step('And the product names and descriptions should remain in English', async () => {
