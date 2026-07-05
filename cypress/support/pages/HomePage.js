@@ -31,9 +31,10 @@ class HomePage extends BasePage {
     return this;
   }
 
-  clickProduct(productName) {
+  navigateToProductPage(productName) {
+    cy.intercept('GET', '**/products/*').as('getProductDetails');
     this.elements.productNames().contains(productName).click();
-    return this;
+    cy.wait('@getProductDetails');
   }
   verifyOnHomePage() {
     cy.url().should('eq', Cypress.config('baseUrl') + '/');
