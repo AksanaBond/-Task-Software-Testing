@@ -1,4 +1,5 @@
-class HomePage {
+import BasePage from './BasePage';
+class HomePage extends BasePage {
   elements = {
     searchInput: () => cy.get('[data-test="search-query"]'),
     searchButton: () => cy.get('[data-test="search-submit"]'),
@@ -8,10 +9,16 @@ class HomePage {
     navMenu: () => cy.get('[data-test="nav-menu"]'),
     homeLink: () => cy.get('[data-test="nav-home"]'),
   };
+  navigateToHomePage() {
+    this.visit('/');
+    return this;
+  }
 
   searchProduct(productName) {
+    cy.intercept('GET', '**/search?q=*').as('getSearchResults');
     this.elements.searchInput().clear().type(productName);
     this.elements.searchButton().click();
+    cy.wait('@getSearchResults');
     return this;
   }
 
@@ -32,7 +39,7 @@ class HomePage {
 
   verifyProductCardsContain(text) {
     this.elements.productNames().each(($el) => {
-      cy.wrap($el).invoke('text').should('include', text);
+      expect($el.text()).to.include(text);
     });
     return this;
   }
