@@ -1,4 +1,4 @@
-import HomePage from "../support/pages/HomePage";
+import HomePage from '../support/pages/HomePage';
 describe('Search for products', () => {
   beforeEach(() => {
     cy.clearCookies();
@@ -9,7 +9,6 @@ describe('Search for products', () => {
     cy.log('Given the user is on the home page');
     HomePage.navigateToHomePage();
     cy.log('When the user searches for the product');
-
     HomePage.searchProduct('Claw Hammer');
     cy.log('Then all returned product cards should contain "Claw Hammer" in their title');
     HomePage.verifyProductCardsContain('Claw Hammer');

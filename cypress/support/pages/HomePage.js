@@ -3,7 +3,7 @@ class HomePage extends BasePage {
   elements = {
     searchInput: () => cy.get('[data-test="search-query"]'),
     searchButton: () => cy.get('[data-test="search-submit"]'),
-    languageDropdown: () => cy.get('[data-test="language"]'),
+    languageDropdown: () => cy.get('[data-test="language-select"]'),
     productCards: () => cy.get('.card'),
     productNames: () => cy.get('[data-test="product-name"]'),
     navMenu: () => cy.get('[data-test="nav-menu"]'),
@@ -12,6 +12,9 @@ class HomePage extends BasePage {
   navigateToHomePage() {
     this.visit('/');
     return this;
+  }
+  getProductNames() {
+    return this.elements.productNames();
   }
 
   searchProduct(productName) {
@@ -49,9 +52,8 @@ class HomePage extends BasePage {
     return this;
   }
 
-  verifyLanguageChanged(expectedLang) {
-    // Verify UI elements are in the expected language
-    cy.get('body').should('contain', expectedLang);
+  verifyLanguageChanged() {
+    this.elements.homeLink().should('have.text', 'Start');
     return this;
   }
 }
