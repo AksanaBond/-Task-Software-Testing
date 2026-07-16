@@ -2,6 +2,9 @@ import wdioPlugin from 'eslint-plugin-wdio';
 import prettierPlugin from 'eslint-plugin-prettier/recommended';
 
 export default [
+  {
+    ignores: ['node_modules/', 'allure-results/', 'allure-report/'],
+  },
   prettierPlugin,
   {
     plugins: {

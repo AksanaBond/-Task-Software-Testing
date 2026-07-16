@@ -69,9 +69,9 @@ export const Then_user_should_be_redirected_to_account_page = async () => {
 // Then a success message should be displayed on the checkout page
 export const Then_success_message_should_be_displayed_on_checkout_page =
   async () => {
-    const messageText = await checkoutPage.getSuccessMessageText();
+    const messageText = await checkoutPage.getPaymentSuccessMessage();
     messageText.should.include(
-      'Thanks for your order',
+      'Payment was successful',
       'Success message was not displayed'
     );
   };

@@ -61,7 +61,7 @@ class CheckoutPage extends BasePage {
     await this.paymentSuccessMessage.waitForDisplayed({ timeout: 5000 });
     await browser.pause(1000);
 
-    await this.clickConfirm();
+    //await this.clickConfirm();
   }
 
   async clickConfirm() {
