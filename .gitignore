@@ -1,2 +1,7 @@
 node_modules
-git 
+
+/test-results/
+/my-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

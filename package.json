@@ -1,0 +1,41 @@
+{
+  "name": "-task-software-testing",
+  "version": "1.0.0",
+  "description": "This repository contains test cases (8 scenarios) written using Gherkin syntax (BDD). The scenarios are written for the [Practice Software Testing](https://practicesoftwaretesting.com/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:safari": "npx playwright test --project=webkit",
+    "test:parallel": "npx playwright test --workers=2",
+    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AksanaBond/-Task-Software-Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AksanaBond/-Task-Software-Testing/issues"
+  },
+  "homepage": "https://github.com/AksanaBond/-Task-Software-Testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1",
+    "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.10.4",
+    "eslint-plugin-prettier": "^5.5.6",
+    "husky": "^9.1.7",
+    "prettier": "^3.9.4"
+  }
+}
