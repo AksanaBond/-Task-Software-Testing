@@ -14,7 +14,8 @@
     "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "report": "npx playwright show-report"
   },
   "repository": {
     "type": "git",
