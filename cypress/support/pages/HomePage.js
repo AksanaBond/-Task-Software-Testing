@@ -18,7 +18,7 @@ class HomePage extends BasePage {
   }
 
   searchProduct(productName) {
-    cy.intercept('GET', '**/search?q=*').as('getSearchResults');
+    cy.intercept('GET', '**/search*').as('getSearchResults');
     this.elements.searchInput().clear().type(productName);
     this.elements.searchButton().click();
     cy.wait('@getSearchResults');

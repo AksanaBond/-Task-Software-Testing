@@ -1,12 +1,12 @@
 import HomePage from '../support/pages/HomePage';
 import ProductPage from '../support/pages/ProductPage';
-describe('Search for products', () => {
+describe('Basket', () => {
   beforeEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
 
-  it('Search for a product using a general keyword', () => {
+  it('Add a product to the basket', () => {
     cy.log('Given the user is on the home page');
     HomePage.navigateToHomePage();
     cy.log(' And the user navigates to the product details page "Bolt Cutters');

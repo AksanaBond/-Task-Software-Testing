@@ -1,10 +1,10 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
+const { allureCypress } = require('allure-cypress/reporter');
 
 module.exports = defineConfig({
-  allowCypressEnv: false,
-
+  reporter: 'spec',
   e2e: {
-    baseUrl: "https://practicesoftwaretesting.com",
+    baseUrl: 'https://practicesoftwaretesting.com',
     viewportWidth: 1280,
     viewportHeight: 720,
     defaultCommandTimeout: 10000,
@@ -12,13 +12,15 @@ module.exports = defineConfig({
     video: true,
     screenshotOnRunFailure: true,
     chromeWebSecurity: false,
-    experimentalStudio: true,
-    supportFile: false,
+    supportFile: 'cypress/support/e2e.js',
     retries: {
       runMode: 2,
       openMode: 0,
     },
     setupNodeEvents(on, config) {
+      allureCypress(on, config, {
+        resultsDir: "allure-results",
+      });
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome' && browser.isHeadless) {
           launchOptions.args.push('--disable-gpu');
@@ -29,6 +31,6 @@ module.exports = defineConfig({
       return config;
     },
     specPattern: 'cypress/e2e/**/*.cy.js',
-    },
-});
 
+  },
+});
