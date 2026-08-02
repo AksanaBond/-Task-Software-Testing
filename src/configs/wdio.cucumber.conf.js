@@ -14,10 +14,13 @@ exports.config = {
   // Point to the .feature files in the features/ directory
   //
   specs: [
+    //path.resolve(__dirname, '../../features/**/*.feature'),
+    path.resolve(__dirname, '../../features/Favorite_products.feature'),
+    path.resolve(__dirname, '../../features/Sign_in.feature'),
+    path.resolve(__dirname, '../../features/Search.feature'),
+    path.resolve(__dirname, '../../features/language_change.feature'),
     path.resolve(__dirname, '../../features/Basket.feature'),
-    //path.resolve(__dirname, '../../features/language_change.feature'),
-    //path.resolve(__dirname, '../../features/Sign_in.feature'),
-    //path.resolve(__dirname, '../../features/Search.feature'),
+    path.resolve(__dirname, '../../features/categories.feature'),
   ],
 
   //
@@ -83,6 +86,7 @@ exports.config = {
     backtrace: false,
     requireModule: [],
     dryRun: false,
+
     failFast: false,
     snippets: true,
     source: true,

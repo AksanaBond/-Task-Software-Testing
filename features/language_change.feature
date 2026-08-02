@@ -1,3 +1,4 @@
+@smoke
 Feature:  language change
 
 Scenario: Switch the interface language

@@ -1,3 +1,4 @@
+@smoke
 Feature: Search for products
 
 Scenario: Search for a product using a general keyword

@@ -1,3 +1,4 @@
+@smoke
 Feature:  User Sign in
 
 Scenario: Successful sign in with valid credentials

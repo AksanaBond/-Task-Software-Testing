@@ -6,6 +6,9 @@
   "scripts": {
     "test": "wdio run ./src/configs/wdio.conf.js",
     "test:cucumber": "wdio run ./src/configs/wdio.cucumber.conf.js",
+    "test:smoke": "wdio run ./src/configs/wdio.cucumber.conf.js --cucumberOpts.tagExpression='@smoke'",
+    "test:basket": "wdio run ./src/configs/wdio.cucumber.conf.js --cucumberOpts.tagExpression='@basket'",
+    "test:favorite": "wdio run ./src/configs/wdio.cucumber.conf.js --cucumberOpts.tagExpression='@favorite'",
     "prepare": "husky install",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

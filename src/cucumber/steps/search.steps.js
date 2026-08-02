@@ -1,10 +1,6 @@
-import { Given, When, Then } from '@wdio/cucumber-framework';
+import { When, Then } from '@wdio/cucumber-framework';
 import { assert } from 'chai';
 import homePage from '../../po/pages/home.page.js';
-
-Given('the user is on the home page', async () => {
-  await homePage.open();
-});
 
 When('the user searches for the product {string}', async (productName) => {
   await homePage.searchFilterComponent.search(productName);

@@ -1,30 +1,23 @@
-import { Given, When, Then } from '@wdio/cucumber-framework';
+import { When, Then } from '@wdio/cucumber-framework';
 import homePage from '../../po/pages/home.page.js';
 import productDetailsPage from '../../po/pages/product.details.page.js';
 import { expect as chaiExpect } from 'chai';
 
-Given('the user is on the login page', async () => {
-  await homePage.open();
-});
-
-Given(
-  'the user navigates to the product details {string}',
-  async (productName) => {
-    await homePage.openProductDetails(productName);
-    await productDetailsPage.productDetailsComponent.productName.waitForDisplayed();
+When(
+  'the user switches the interface language to {string}',
+  async (language) => {
+    const langCode = language === 'Deutsch' ? 'DE' : 'EN';
+    await productDetailsPage.navbarComponent.changeLanguage(langCode);
+    await browser.waitUntil(
+      async () => {
+        const text =
+          await productDetailsPage.navbarComponent.homeLink.getText();
+        return text === 'Start';
+      },
+      { timeout: 5000, timeoutMsg: 'Language did not switch to German in time' }
+    );
   }
 );
-
-When('the user switches the interface language to {string}', async () => {
-  await productDetailsPage.navbarComponent.changeLanguage('DE');
-  await browser.waitUntil(
-    async () => {
-      const text = await productDetailsPage.navbarComponent.homeLink.getText();
-      return text === 'Start';
-    },
-    { timeout: 5000, timeoutMsg: 'Language did not switch to German in time' }
-  );
-});
 
 Then('the application interface should be displayed in German', async () => {
   const homeLinkText = await homePage.navbarComponent.homeLink.getText();
