@@ -14,8 +14,10 @@ exports.config = {
   // Point to the .feature files in the features/ directory
   //
   specs: [
-    path.resolve(__dirname, '../../features/Search.feature'),
+    path.resolve(__dirname, '../../features/Basket.feature'),
+    //path.resolve(__dirname, '../../features/language_change.feature'),
     //path.resolve(__dirname, '../../features/Sign_in.feature'),
+    //path.resolve(__dirname, '../../features/Search.feature'),
   ],
 
   //
@@ -77,9 +79,7 @@ exports.config = {
   // See: https://webdriver.io/docs/frameworks#cucumberopts-options
   //
   cucumberOpts: {
-    require: [
-      path.resolve(__dirname, '../cucumber/steps/**/*.js'),
-    ],
+    require: [path.resolve(__dirname, '../cucumber/steps/**/*.js')],
     backtrace: false,
     requireModule: [],
     dryRun: false,
@@ -104,5 +104,4 @@ exports.config = {
       await browser.debug();
     }
   },
-
 };
