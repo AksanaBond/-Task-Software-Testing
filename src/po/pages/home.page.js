@@ -15,13 +15,24 @@ class HomePage extends BasePage {
   }
   async openProductDetails(productName) {
     const productCard = await this.cardComponent.getCard(productName);
+    await productCard.waitForDisplayed({
+      timeout: 10000,
+      timeoutMsg: `Product "${productName}" does not loaded`,
+    });
     await productCard.click();
   }
   async getVisibleProductNames() {
+    const firstTitle = await this.productTitles[0];
+    await firstTitle.waitForDisplayed({
+      timeout: 10000,
+      timeoutMsg: 'empty',
+    });
     return await this.productTitles.map(async (el) => await el.getText());
   }
   async openFirstCard() {
-    await this.productTitles[0].click();
+    const firstCard = await this.productTitles[0];
+    await firstCard.waitForDisplayed({ timeout: 10000 });
+    await firstCard.click();
   }
 }
 export default new HomePage();

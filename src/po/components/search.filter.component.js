@@ -22,6 +22,10 @@ class SearchFilterComponent extends BaseComponent {
     return $(`//label[contains(., "${parameter}")]/input`);
   }
   async search(productName) {
+    await this.searchInput.waitForDisplayed({
+      timeout: 10000,
+      timeoutMsg: 'does not loaded',
+    });
     await this.searchInput.setValue(productName);
     await this.searchButton.click();
   }

@@ -28,7 +28,11 @@ class NavBarComponent extends BaseComponent {
     );
   }
   async goToSignInPage() {
-    await this.signInLink.click();
+    const link = await this.signInLink;
+    link.waitForDisplayed({
+      timeout: 10000,
+    });
+    await link.click();
   }
   async changeLanguage(languageCode) {
     await this.languageDropdown.click();

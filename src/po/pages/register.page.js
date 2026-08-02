@@ -7,7 +7,11 @@ class RegisterPage extends BasePage {
     this.registerComponent = new RegisterComponent();
   }
   async inputFirstName(firstName) {
-    await this.registerComponent.firstNameInput.setValue(firstName);
+    const input =
+      await this.registerComponent.firstNameInput.setValue(firstName);
+    await input.waitForDisplayed({
+      timeout: 10000,
+    });
   }
   async inputLastName(lasttName) {
     await this.registerComponent.lastNameInput.setValue(lasttName);
