@@ -101,12 +101,14 @@ exports.config = {
   // =====
   // Hooks
   // =====
-  afterStep: async function (step, scenario, { error, duration, passed }) {
+  afterStep: async function (step, scenario, { error, duration, passed, result }) {
     if (!passed) {
       await browser.takeScreenshot();
-      // Pause on failure so you can inspect the browser state.
-      // The terminal will show "REPL interface" — press Ctrl+C to continue.
       //await browser.debug();
     }
+    if (!result.passed) {
+        const currentUrl = await browser.getUrl();
+        console.log(`\n❌ Test failed! URL : ${currentUrl}\n`);
+      }
   },
 };
