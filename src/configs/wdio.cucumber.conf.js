@@ -106,7 +106,7 @@ exports.config = {
       await browser.takeScreenshot();
       // Pause on failure so you can inspect the browser state.
       // The terminal will show "REPL interface" — press Ctrl+C to continue.
-      await browser.debug();
+      //await browser.debug();
     }
   },
 };
